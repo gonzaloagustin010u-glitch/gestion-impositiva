@@ -19,12 +19,12 @@ export default function LoginPage() {
   return (
     <div className="relative flex min-h-screen w-full items-center justify-center">
       <Image
-        src="https://picsum.photos/seed/binary/1920/1080"
-        alt="Fondo binario"
+        src="https://picsum.photos/seed/darkcode/1920/1080"
+        alt="Fondo oscuro de código"
         width="1920"
         height="1080"
         className="absolute inset-0 h-full w-full object-cover dark:brightness-50"
-        data-ai-hint="binary code"
+        data-ai-hint="dark code"
       />
       <div className="relative z-10 mx-auto w-full max-w-md p-4">
         <div className="grid gap-2 text-center mb-6">
