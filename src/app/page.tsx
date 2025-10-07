@@ -76,7 +76,7 @@ export default function LoginPage() {
       </div>
       <div className="hidden bg-muted lg:block">
         <Image
-          src="https://storage.googleapis.com/project-spark-b2489c45/taxwise-bg.jpg"
+          src="https://picsum.photos/seed/taxwise/1920/1080"
           alt="Image"
           width="1920"
           height="1080"
