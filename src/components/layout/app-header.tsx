@@ -15,7 +15,7 @@ import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 export function AppHeader({ user }: { user: User }) {
   return (
-    <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
+    <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-primary/10 backdrop-blur-sm px-4 md:px-6">
       <div className="md:hidden">
         <SidebarTrigger />
       </div>
