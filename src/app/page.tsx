@@ -56,14 +56,6 @@ export default function LoginPage() {
                 <Link href="/dashboard">Acceder</Link>
               </Button>
             </div>
-            <div className="mt-4 text-center text-sm">
-              <Link
-                href="#"
-                className="underline text-white"
-              >
-                ← Volver a TaxWise
-              </Link>
-            </div>
           </CardContent>
         </Card>
       </div>
