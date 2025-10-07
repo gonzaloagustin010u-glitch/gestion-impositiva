@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "TaxWise",
-  description: "Gestión Inteligente de Impuestos para Empresas Modernas",
+  description: "El objetivo inicial de la propuesta es, implementar el diseño de un software, herramienta y/o sistema que permita la simplificación y el monitoreo en tiempo real las declaraciones impositivas mensuales de los establecimientos comerciales antes los diferentes entes gubernamentales, que surge con las transacciones mercantiles de compras y ventas de los productos y/o servicios",
 };
 
 export default function RootLayout({

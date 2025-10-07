@@ -23,7 +23,7 @@ export default function LoginPage() {
           </div>
           <CardTitle className="text-2xl font-headline">Gestión Impositiva</CardTitle>
           <CardDescription>
-            Ingresá tu email para iniciar sesión en tu cuenta
+            Simplificación y monitoreo en tiempo real de declaraciones impositivas.
           </CardDescription>
         </CardHeader>
         <CardContent>
