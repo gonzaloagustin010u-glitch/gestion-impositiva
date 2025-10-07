@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -17,22 +16,14 @@ import { Checkbox } from "@/components/ui/checkbox";
 
 export default function LoginPage() {
   return (
-    <div className="relative flex min-h-screen w-full items-center justify-center">
-      <Image
-        src="https://picsum.photos/seed/darkcode/1920/1080"
-        alt="Fondo oscuro de código"
-        width="1920"
-        height="1080"
-        className="absolute inset-0 h-full w-full object-cover dark:brightness-50"
-        data-ai-hint="dark code"
-      />
+    <div className="relative flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-primary via-blue-500 to-blue-800">
       <div className="relative z-10 mx-auto w-full max-w-md p-4">
         <div className="grid gap-2 text-center mb-6">
           <div className="flex justify-center mb-4">
             <Logo />
           </div>
-          <h1 className="text-3xl font-bold font-headline text-primary-foreground dark:text-primary-foreground">Gestión Impositiva</h1>
-          <p className="text-balance text-muted-foreground dark:text-muted-foreground">
+          <h1 className="text-3xl font-bold font-headline text-primary-foreground dark:text-white">Gestión Impositiva</h1>
+          <p className="text-balance text-muted-foreground dark:text-gray-200">
             Simplificación y monitoreo en tiempo real de declaraciones impositivas.
           </p>
         </div>
