@@ -21,7 +21,7 @@ export default function LoginPage() {
           <div className="flex justify-center mb-4">
              <Logo />
           </div>
-          <CardTitle className="text-2xl font-headline">TaxWise</CardTitle>
+          <CardTitle className="text-2xl font-headline">Gestión Impositiva</CardTitle>
           <CardDescription>
             Ingresá tu email para iniciar sesión en tu cuenta
           </CardDescription>
