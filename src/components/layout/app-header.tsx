@@ -34,7 +34,7 @@ export function AppHeader({ user }: { user: User }) {
               className="rounded-full"
               data-ai-hint="person face"
             />
-            <span className="sr-only">Toggle user menu</span>
+            <span className="sr-only">Abrir menú de usuario</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
@@ -47,12 +47,12 @@ export function AppHeader({ user }: { user: User }) {
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-          <DropdownMenuItem>Settings</DropdownMenuItem>
+          <DropdownMenuItem>Perfil</DropdownMenuItem>
+          <DropdownMenuItem>Facturación</DropdownMenuItem>
+          <DropdownMenuItem>Configuración</DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem asChild>
-            <Link href="/">Logout</Link>
+            <Link href="/">Cerrar Sesión</Link>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

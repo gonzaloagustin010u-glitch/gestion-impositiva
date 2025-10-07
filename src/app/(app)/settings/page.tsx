@@ -38,9 +38,9 @@ export default function SettingsPage() {
   if (user.role !== "soporte") {
     return (
       <div className="flex h-[calc(100vh-200px)] flex-col items-center justify-center p-8 text-center">
-        <h2 className="text-2xl font-bold font-headline">Access Denied</h2>
+        <h2 className="text-2xl font-bold font-headline">Acceso Denegado</h2>
         <p className="mt-2 text-muted-foreground">
-          You do not have the required permissions to view this page.
+          No tenés los permisos necesarios para ver esta página.
         </p>
       </div>
     );
@@ -48,29 +48,29 @@ export default function SettingsPage() {
 
   return (
     <div className="flex flex-col gap-8">
-      <h1 className="text-3xl font-bold font-headline">Settings</h1>
+      <h1 className="text-3xl font-bold font-headline">Configuración</h1>
       <Tabs defaultValue="users">
         <TabsList>
-          <TabsTrigger value="users">User Management</TabsTrigger>
-          <TabsTrigger value="rates">Tax Rates</TabsTrigger>
-          <TabsTrigger value="logs">Activity Logs</TabsTrigger>
+          <TabsTrigger value="users">Gestión de Usuarios</TabsTrigger>
+          <TabsTrigger value="rates">Tasas de Impuestos</TabsTrigger>
+          <TabsTrigger value="logs">Registros de Actividad</TabsTrigger>
         </TabsList>
         <TabsContent value="users">
           <Card>
             <CardHeader>
-              <CardTitle>Users</CardTitle>
-              <CardDescription>Manage your team and their roles.</CardDescription>
+              <CardTitle>Usuarios</CardTitle>
+              <CardDescription>Gestioná tu equipo y sus roles.</CardDescription>
               <div className="flex justify-end">
-                <Button size="sm"><PlusCircle className="mr-2 h-4 w-4" /> Add User</Button>
+                <Button size="sm"><PlusCircle className="mr-2 h-4 w-4" /> Agregar Usuario</Button>
               </div>
             </CardHeader>
             <CardContent>
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Name</TableHead>
+                    <TableHead>Nombre</TableHead>
                     <TableHead>Email</TableHead>
-                    <TableHead>Role</TableHead>
+                    <TableHead>Rol</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -89,8 +89,8 @@ export default function SettingsPage() {
         <TabsContent value="rates">
           <Card>
             <CardHeader>
-              <CardTitle>Tax Rates</CardTitle>
-              <CardDescription>Configure application-wide tax rates.</CardDescription>
+              <CardTitle>Tasas de Impuestos</CardTitle>
+              <CardDescription>Configurá las tasas de impuestos de la aplicación.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               {taxRates.map(rate => (
@@ -100,7 +100,7 @@ export default function SettingsPage() {
                     </div>
                     <div className="flex items-center gap-2">
                         <Input defaultValue={rate.rate} className="w-24 text-right" />
-                        <Button variant="outline">Save</Button>
+                        <Button variant="outline">Guardar</Button>
                     </div>
                 </div>
               ))}
@@ -110,11 +110,11 @@ export default function SettingsPage() {
         <TabsContent value="logs">
            <Card>
             <CardHeader>
-              <CardTitle>Activity Logs</CardTitle>
-              <CardDescription>Review recent activity in the system.</CardDescription>
+              <CardTitle>Registros de Actividad</CardTitle>
+              <CardDescription>Revisá la actividad reciente en el sistema.</CardDescription>
             </CardHeader>
             <CardContent>
-                <p className="text-muted-foreground">Activity logs will be displayed here.</p>
+                <p className="text-muted-foreground">Los registros de actividad se mostrarán aquí.</p>
             </CardContent>
           </Card>
         </TabsContent>

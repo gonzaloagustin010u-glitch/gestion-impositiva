@@ -26,31 +26,31 @@ const menuItems = [
   {
     href: "/dashboard",
     icon: LayoutDashboard,
-    label: "Dashboard",
+    label: "Panel de Control",
     roles: ["soporte", "intermedio", "inicial"],
   },
   {
     href: "/sales",
     icon: ReceiptText,
-    label: "Sales",
+    label: "Ventas",
     roles: ["soporte", "intermedio", "inicial"],
   },
   {
     href: "/purchases",
     icon: ShoppingCart,
-    label: "Purchases",
+    label: "Compras",
     roles: ["soporte", "intermedio", "inicial"],
   },
   {
     href: "/declarations",
     icon: FileText,
-    label: "Declarations",
+    label: "Declaraciones",
     roles: ["soporte", "intermedio"],
   },
   {
     href: "/settings",
     icon: Settings,
-    label: "Settings",
+    label: "Configuración",
     roles: ["soporte"],
   },
 ];
@@ -90,9 +90,9 @@ export function AppSidebar({ user }: { user: User }) {
       <SidebarFooter className="p-2">
         <SidebarMenu>
             <SidebarMenuItem>
-                <SidebarMenuButton tooltip="Support">
+                <SidebarMenuButton tooltip="Soporte">
                     <LifeBuoy />
-                    <span>Support</span>
+                    <span>Soporte</span>
                 </SidebarMenuButton>
             </SidebarMenuItem>
         </SidebarMenu>

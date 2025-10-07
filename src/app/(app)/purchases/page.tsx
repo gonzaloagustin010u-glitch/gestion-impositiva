@@ -34,30 +34,30 @@ export default function PurchasesPage() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold font-headline">Purchases</h1>
+        <h1 className="text-3xl font-bold font-headline">Compras</h1>
         <Button>
-          <Upload className="mr-2 h-4 w-4" /> Import Purchases
+          <Upload className="mr-2 h-4 w-4" /> Importar Compras
         </Button>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Purchase Records</CardTitle>
+          <CardTitle>Registros de Compras</CardTitle>
           <CardDescription>
-            Browse and manage your purchase records for the current period.
+            Navegá y gestioná tus registros de compras para el período actual.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Date</TableHead>
+                <TableHead>Fecha</TableHead>
                 <TableHead>CUIT</TableHead>
-                <TableHead>Attachment</TableHead>
-                <TableHead className="text-right">Net Amount</TableHead>
+                <TableHead>Adjunto</TableHead>
+                <TableHead className="text-right">Monto Neto</TableHead>
                 <TableHead className="text-right">IVA</TableHead>
                 <TableHead className="text-right">Total</TableHead>
-                <TableHead><span className="sr-only">Actions</span></TableHead>
+                <TableHead><span className="sr-only">Acciones</span></TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -83,8 +83,8 @@ export default function PurchasesPage() {
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent>
-                        <DropdownMenuItem>View Details</DropdownMenuItem>
-                        <DropdownMenuItem>Attach File</DropdownMenuItem>
+                        <DropdownMenuItem>Ver Detalles</DropdownMenuItem>
+                        <DropdownMenuItem>Adjuntar Archivo</DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </TableCell>

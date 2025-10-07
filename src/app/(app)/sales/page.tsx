@@ -28,26 +28,26 @@ export default function SalesPage() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold font-headline">Sales</h1>
+        <h1 className="text-3xl font-bold font-headline">Ventas</h1>
         <Button>
-          <Upload className="mr-2 h-4 w-4" /> Import Sales
+          <Upload className="mr-2 h-4 w-4" /> Importar Ventas
         </Button>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Sales Records</CardTitle>
+          <CardTitle>Registros de Ventas</CardTitle>
           <CardDescription>
-            Browse and manage your sales records for the current period.
+            Navegá y gestioná tus registros de ventas para el período actual.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Date</TableHead>
+                <TableHead>Fecha</TableHead>
                 <TableHead>CUIT</TableHead>
-                <TableHead className="text-right">Net Amount</TableHead>
+                <TableHead className="text-right">Monto Neto</TableHead>
                 <TableHead className="text-right">IVA</TableHead>
                 <TableHead className="text-right">Total</TableHead>
               </TableRow>
