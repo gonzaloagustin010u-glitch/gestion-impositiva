@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { type User } from "@/lib/auth";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 export function AppHeader({ user }: { user: User }) {
   return (
@@ -22,6 +23,8 @@ export function AppHeader({ user }: { user: User }) {
       <div className="flex-1">
         {/* Placeholder for breadcrumbs or page title if needed */}
       </div>
+
+      <ThemeToggle />
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
