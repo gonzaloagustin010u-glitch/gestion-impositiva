@@ -26,30 +26,31 @@ export default function LoginPage() {
         </div>
         <Card className="bg-white/10 backdrop-blur-sm border-white/20">
           <CardHeader>
-            <CardTitle className="text-2xl">Iniciar Sesión</CardTitle>
-            <CardDescription>
+            <CardTitle className="text-2xl text-white">Iniciar Sesión</CardTitle>
+            <CardDescription className="text-white">
               Ingresá tus credenciales para acceder a tu cuenta.
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid gap-4">
               <div className="grid gap-2">
-                <Label htmlFor="email">Nombre de usuario o dirección de correo electrónico</Label>
+                <Label htmlFor="email" className="text-white">Nombre de usuario o dirección de correo electrónico</Label>
                 <Input
                   id="email"
                   type="email"
                   placeholder="usuario"
                   required
                   defaultValue="taylor.smith@example.com"
+                  className="bg-white/20 border-white/30 text-white placeholder:text-white/70"
                 />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="password">Contraseña</Label>
-                <Input id="password" type="password" required defaultValue="••••••••" />
+                <Label htmlFor="password" className="text-white">Contraseña</Label>
+                <Input id="password" type="password" required defaultValue="••••••••" className="bg-white/20 border-white/30 text-white placeholder:text-white/70" />
               </div>
                <div className="flex items-center space-x-2">
-                <Checkbox id="remember" />
-                <Label htmlFor="remember" className="text-sm font-normal">Recuérdame</Label>
+                <Checkbox id="remember" className="border-white" />
+                <Label htmlFor="remember" className="text-sm font-normal text-white">Recuérdame</Label>
               </div>
               <Button type="submit" className="w-full" asChild>
                 <Link href="/dashboard">Acceder</Link>
@@ -58,7 +59,7 @@ export default function LoginPage() {
             <div className="mt-4 text-center text-sm">
               <Link
                 href="#"
-                className="underline"
+                className="underline text-white"
               >
                 ← Volver a TaxWise
               </Link>
