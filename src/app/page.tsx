@@ -24,7 +24,7 @@ export default function LoginPage() {
             Simplificación y monitoreo en tiempo real de declaraciones impositivas.
           </p>
         </div>
-        <Card className="bg-background/80 backdrop-blur-sm border-white/20">
+        <Card className="bg-white/10 backdrop-blur-sm border-white/20">
           <CardHeader>
             <CardTitle className="text-2xl">Iniciar Sesión</CardTitle>
             <CardDescription>
