@@ -61,10 +61,7 @@ export function AppSidebar({ user }: { user: User }) {
   return (
     <Sidebar>
       <SidebarHeader>
-        <Link href="/dashboard" className="flex items-center gap-2">
-          <Logo />
-          <span className="text-lg font-semibold font-headline">TaxWise</span>
-        </Link>
+        
       </SidebarHeader>
       <SidebarContent className="p-2">
         <SidebarMenu>
