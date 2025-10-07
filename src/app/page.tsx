@@ -20,7 +20,7 @@ export default function LoginPage() {
         <div className="grid gap-2 text-center mb-6">
           
           <h1 className="text-3xl font-bold font-headline text-primary-foreground dark:text-white">Gestión Impositiva</h1>
-          <p className="text-balance text-muted-foreground dark:text-gray-200">
+          <p className="text-balance text-white">
             Simplificación y monitoreo en tiempo real de declaraciones impositivas.
           </p>
         </div>
