@@ -1,3 +1,22 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "user1",
+      "description": "Avatar for a support user",
+      "imageUrl": "https://picsum.photos/seed/user1/40/40",
+      "imageHint": "person face"
+    },
+    {
+      "id": "user2",
+      "description": "Avatar for an intermediate user",
+      "imageUrl": "https://picsum.photos/seed/user2/40/40",
+      "imageHint": "person face"
+    },
+    {
+      "id": "user3",
+      "description": "Avatar for an initial user",
+      "imageUrl": "https://picsum.photos/seed/user3/40/40",
+      "imageHint": "person face"
+    }
+  ]
 }
