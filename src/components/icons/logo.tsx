@@ -11,7 +11,7 @@ export const Logo = ({ className, ...props }: React.SVGProps<SVGSVGElement>) => 
     {...props}
   >
     <rect width="32" height="32" rx="8" fill="currentColor" />
-    <g className="text-primary-foreground">
+    <g className="text-background">
       <path
         d="M11 12H21"
         stroke="currentColor"

@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -14,75 +13,70 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Logo } from "@/components/icons/logo";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function LoginPage() {
   return (
-    <div className="w-full lg:grid lg:min-h-screen lg:grid-cols-2 xl:min-h-screen">
-      <div className="flex items-center justify-center py-12">
-        <div className="mx-auto grid w-[350px] gap-6">
-          <div className="grid gap-2 text-center">
-             <div className="flex justify-center mb-4">
-               <Logo />
-             </div>
-            <h1 className="text-3xl font-bold font-headline">Gestión Impositiva</h1>
-            <p className="text-balance text-muted-foreground">
-              Simplificación y monitoreo en tiempo real de declaraciones impositivas.
-            </p>
+    <div className="relative flex min-h-screen w-full items-center justify-center">
+      <Image
+        src="https://picsum.photos/seed/binary/1920/1080"
+        alt="Fondo binario"
+        width="1920"
+        height="1080"
+        className="absolute inset-0 h-full w-full object-cover dark:brightness-50"
+        data-ai-hint="binary code"
+      />
+      <div className="relative z-10 mx-auto w-full max-w-md p-4">
+        <div className="grid gap-2 text-center mb-6">
+          <div className="flex justify-center mb-4">
+            <Logo />
           </div>
-          <Card>
-            <CardHeader>
-                <CardTitle className="text-2xl">Iniciar Sesión</CardTitle>
-                <CardDescription>
-                    Ingresá tu email para acceder a tu cuenta.
-                </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid gap-4">
-                <div className="grid gap-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="m@ejemplo.com"
-                    required
-                    defaultValue="taylor.smith@example.com"
-                  />
-                </div>
-                <div className="grid gap-2">
-                  <div className="flex items-center">
-                    <Label htmlFor="password">Contraseña</Label>
-                    <Link
-                      href="#"
-                      className="ml-auto inline-block text-sm underline"
-                    >
-                      ¿Olvidaste tu contraseña?
-                    </Link>
-                  </div>
-                  <Input id="password" type="password" required defaultValue="••••••••" />
-                </div>
-                <Button type="submit" className="w-full" asChild>
-                  <Link href="/dashboard">Iniciar Sesión</Link>
-                </Button>
-              </div>
-              <div className="mt-4 text-center text-sm">
-                ¿No tenés una cuenta?{" "}
-                <Link href="#" className="underline">
-                  Registrate
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
+          <h1 className="text-3xl font-bold font-headline text-primary-foreground">Gestión Impositiva</h1>
+          <p className="text-balance text-muted-foreground">
+            Simplificación y monitoreo en tiempo real de declaraciones impositivas.
+          </p>
         </div>
-      </div>
-      <div className="hidden bg-muted lg:block">
-        <Image
-          src="https://picsum.photos/seed/accounting/1920/1080"
-          alt="Image"
-          width="1920"
-          height="1080"
-          className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
-          data-ai-hint="accounting"
-        />
+        <Card className="bg-background/80 backdrop-blur-sm border-white/20">
+          <CardHeader>
+            <CardTitle className="text-2xl">Iniciar Sesión</CardTitle>
+            <CardDescription>
+              Ingresá tus credenciales para acceder a tu cuenta.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-4">
+              <div className="grid gap-2">
+                <Label htmlFor="email">Nombre de usuario o dirección de correo electrónico</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="usuario"
+                  required
+                  defaultValue="taylor.smith@example.com"
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="password">Contraseña</Label>
+                <Input id="password" type="password" required defaultValue="••••••••" />
+              </div>
+               <div className="flex items-center space-x-2">
+                <Checkbox id="remember" />
+                <Label htmlFor="remember" className="text-sm font-normal">Recuérdame</Label>
+              </div>
+              <Button type="submit" className="w-full" asChild>
+                <Link href="/dashboard">Acceder</Link>
+              </Button>
+            </div>
+            <div className="mt-4 text-center text-sm">
+              <Link
+                href="#"
+                className="underline"
+              >
+                ← Volver a TaxWise
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
