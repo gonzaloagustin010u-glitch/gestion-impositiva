@@ -15,8 +15,8 @@ import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 export function AppHeader({ user }: { user: User }) {
   return (
-    <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-primary/10 backdrop-blur-sm px-4 md:px-6">
-      <div className="md:hidden">
+    <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-primary/10 backdrop-blur-sm">
+      <div className="md:hidden px-4">
         <SidebarTrigger />
       </div>
 
@@ -24,41 +24,43 @@ export function AppHeader({ user }: { user: User }) {
         {/* Placeholder for breadcrumbs or page title if needed */}
       </div>
 
-      <ThemeToggle />
+      <div className="flex items-center gap-4 px-4 md:px-6">
+        <ThemeToggle />
 
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="icon" className="rounded-full">
-            <Image
-              src={user.avatarUrl}
-              alt={user.name}
-              width={32}
-              height={32}
-              className="rounded-full"
-              data-ai-hint="person face"
-            />
-            <span className="sr-only">Abrir menú de usuario</span>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuLabel>
-            <div className="flex flex-col space-y-1">
-              <p className="text-sm font-medium leading-none">{user.name}</p>
-              <p className="text-xs leading-none text-muted-foreground">
-                {user.email}
-              </p>
-            </div>
-          </DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Perfil</DropdownMenuItem>
-          <DropdownMenuItem>Facturación</DropdownMenuItem>
-          <DropdownMenuItem>Configuración</DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem asChild>
-            <Link href="/">Cerrar Sesión</Link>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="icon" className="rounded-full">
+              <Image
+                src={user.avatarUrl}
+                alt={user.name}
+                width={32}
+                height={32}
+                className="rounded-full"
+                data-ai-hint="person face"
+              />
+              <span className="sr-only">Abrir menú de usuario</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>
+              <div className="flex flex-col space-y-1">
+                <p className="text-sm font-medium leading-none">{user.name}</p>
+                <p className="text-xs leading-none text-muted-foreground">
+                  {user.email}
+                </p>
+              </div>
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Perfil</DropdownMenuItem>
+            <DropdownMenuItem>Facturación</DropdownMenuItem>
+            <DropdownMenuItem>Configuración</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem asChild>
+              <Link href="/">Cerrar Sesión</Link>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
     </header>
   );
 }
