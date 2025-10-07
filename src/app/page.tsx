@@ -15,7 +15,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 
 export default function LoginPage() {
   return (
-    <div className="relative flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-blue-200 via-blue-400 to-blue-800">
+    <div className="relative flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-blue-400 to-black">
       <div className="relative z-10 mx-auto w-full max-w-md p-4">
         <div className="grid gap-2 text-center mb-6">
           
