@@ -36,11 +36,11 @@ const chartData = [
 const chartConfig = {
   sales: {
     label: "Ventas",
-    color: "hsl(var(--primary))",
+    color: "hsl(var(--chart-1))",
   },
   purchases: {
     label: "Compras",
-    color: "hsl(var(--accent))",
+    color: "hsl(var(--chart-2))",
   },
 };
 
