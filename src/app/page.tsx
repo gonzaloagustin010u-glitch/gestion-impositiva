@@ -31,8 +31,8 @@ export default function LoginPage() {
           <div className="flex justify-center mb-4">
             <Logo />
           </div>
-          <h1 className="text-3xl font-bold font-headline text-primary-foreground">Gestión Impositiva</h1>
-          <p className="text-balance text-muted-foreground">
+          <h1 className="text-3xl font-bold font-headline text-primary-foreground dark:text-primary-foreground">Gestión Impositiva</h1>
+          <p className="text-balance text-muted-foreground dark:text-muted-foreground">
             Simplificación y monitoreo en tiempo real de declaraciones impositivas.
           </p>
         </div>
