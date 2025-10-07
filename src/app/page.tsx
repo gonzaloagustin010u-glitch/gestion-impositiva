@@ -11,17 +11,14 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Logo } from "@/components/icons/logo";
 import { Checkbox } from "@/components/ui/checkbox";
 
 export default function LoginPage() {
   return (
-    <div className="relative flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-gray-900 via-gray-900 to-black">
+    <div className="relative flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-black via-black to-black">
       <div className="relative z-10 mx-auto w-full max-w-md p-4">
         <div className="grid gap-2 text-center mb-6">
-          <div className="flex justify-center mb-4">
-            <Logo />
-          </div>
+          
           <h1 className="text-3xl font-bold font-headline text-primary-foreground dark:text-white">Gestión Impositiva</h1>
           <p className="text-balance text-muted-foreground dark:text-gray-200">
             Simplificación y monitoreo en tiempo real de declaraciones impositivas.
