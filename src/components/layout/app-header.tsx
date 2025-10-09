@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -12,13 +13,87 @@ import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { type User } from "@/lib/auth";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { usePathname } from "next/navigation";
+import {
+  LayoutDashboard,
+  ReceiptText,
+  ShoppingCart,
+  FileText,
+  Settings,
+  LifeBuoy,
+  PanelLeft,
+} from "lucide-react";
+
+const menuItems = [
+  {
+    href: "/dashboard",
+    icon: LayoutDashboard,
+    label: "Panel de Control",
+    roles: ["soporte", "intermedio", "inicial"],
+  },
+  {
+    href: "/sales",
+    icon: ReceiptText,
+    label: "Ventas",
+    roles: ["soporte", "intermedio", "inicial"],
+  },
+  {
+    href: "/purchases",
+    icon: ShoppingCart,
+    label: "Compras",
+    roles: ["soporte", "intermedio", "inicial"],
+  },
+  {
+    href: "/declarations",
+    icon: FileText,
+    label: "Declaraciones",
+    roles: ["soporte", "intermedio"],
+  },
+  {
+    href: "/settings",
+    icon: Settings,
+    label: "Configuración",
+    roles: ["soporte"],
+  },
+];
 
 export function AppHeader({ user }: { user: User }) {
+  const pathname = usePathname();
+
   return (
-    <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-primary/10 backdrop-blur-sm px-4 md:px-6">
-      <div className="md:hidden">
-        <SidebarTrigger />
-      </div>
+    <header className="flex h-16 items-center gap-4 border-b bg-primary px-4 md:px-6">
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <SidebarTrigger asChild>
+            <Button variant="ghost" size="icon">
+              <PanelLeft />
+              <span className="sr-only">Toggle Sidebar</span>
+            </Button>
+          </SidebarTrigger>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="start">
+          <DropdownMenuLabel>Menú</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          {menuItems.map(
+            (item) =>
+              item.roles.includes(user.role) && (
+                <DropdownMenuItem key={item.href} asChild>
+                  <Link href={item.href}>
+                    <item.icon className="mr-2 h-4 w-4" />
+                    <span>{item.label}</span>
+                  </Link>
+                </DropdownMenuItem>
+              )
+          )}
+          <DropdownMenuSeparator />
+          <DropdownMenuItem asChild>
+            <Link href="/support">
+              <LifeBuoy className="mr-2 h-4 w-4" />
+              <span>Soporte</span>
+            </Link>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
 
       <div className="flex-1">
         {/* Placeholder for breadcrumbs or page title if needed */}

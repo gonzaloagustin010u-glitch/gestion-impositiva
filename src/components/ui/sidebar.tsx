@@ -132,23 +132,9 @@ const SidebarProvider = React.forwardRef<
     return (
       <SidebarContext.Provider value={contextValue}>
         <TooltipProvider delayDuration={0}>
-          <div
-            style={
-              {
-                "--sidebar-width": SIDEBAR_WIDTH,
-                "--sidebar-width-icon": SIDEBAR_WIDTH_ICON,
-                ...style,
-              } as React.CSSProperties
-            }
-            className={cn(
-              "group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar",
-              className
-            )}
-            ref={ref}
-            {...props}
-          >
+          <>
             {children}
-          </div>
+          </>
         </TooltipProvider>
       </SidebarContext.Provider>
     )
@@ -215,7 +201,7 @@ const Sidebar = React.forwardRef<
     return (
       <div
         ref={ref}
-        className="group peer hidden md:block text-sidebar-foreground"
+        className="group peer hidden md:block text-sidebar-foreground group-data-[collapsible=offcanvas]:hidden"
         data-state={state}
         data-collapsible={state === "collapsed" ? collapsible : ""}
         data-variant={variant}
@@ -225,7 +211,7 @@ const Sidebar = React.forwardRef<
         <div
           className={cn(
             "duration-200 relative h-svh w-[--sidebar-width] bg-transparent transition-[width] ease-linear",
-            "group-data-[collapsible=offcanvas]:w-0",
+            "group-data-[collapsible=offcanvas]:w-0", // Mantener esto para el espacio
             "group-data-[side=right]:rotate-180",
             variant === "floating" || variant === "inset"
               ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]"
@@ -236,8 +222,8 @@ const Sidebar = React.forwardRef<
           className={cn(
             "duration-200 fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] ease-linear md:flex",
             side === "left"
-              ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]"
-              : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
+              ? "left-0 group-data-[collapsible=offcanvas]:-left-[var(--sidebar-width)]" // Cambiar a -left para ocultar
+              : "right-0 group-data-[collapsible=offcanvas]:-right-[var(--sidebar-width)]", // Cambiar a -right para ocultar
             // Adjust the padding for floating and inset variants.
             variant === "floating" || variant === "inset"
               ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]"
@@ -261,12 +247,13 @@ Sidebar.displayName = "Sidebar"
 
 const SidebarTrigger = React.forwardRef<
   React.ElementRef<typeof Button>,
-  React.ComponentProps<typeof Button>
->(({ className, onClick, ...props }, ref) => {
+  React.ComponentProps<typeof Button> & { asChild?: boolean }
+>(({ className, onClick, asChild = false, children, ...props }, ref) => {
   const { toggleSidebar } = useSidebar()
+  const Comp = asChild ? Slot : Button
 
   return (
-    <Button
+    <Comp
       ref={ref}
       data-sidebar="trigger"
       variant="ghost"
@@ -278,9 +265,15 @@ const SidebarTrigger = React.forwardRef<
       }}
       {...props}
     >
-      <PanelLeft />
-      <span className="sr-only">Toggle Sidebar</span>
-    </Button>
+      {asChild ? (
+        children
+      ) : (
+        <>
+          <PanelLeft />
+          <span className="sr-only">Toggle Sidebar</span>
+        </>
+      )}
+    </Comp>
   )
 })
 SidebarTrigger.displayName = "SidebarTrigger"
@@ -316,18 +309,23 @@ SidebarRail.displayName = "SidebarRail"
 
 const SidebarInset = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<"main">
->(({ className, ...props }, ref) => {
+  React.ComponentProps<"div"> & { header?: React.ReactNode }
+>(({ className, children, header, ...props }, ref) => {
   return (
-    <main
+    <div
       ref={ref}
       className={cn(
-        "relative flex min-h-svh flex-1 flex-col bg-background",
-        "peer-data-[variant=inset]:min-h-[calc(100svh-theme(spacing.4))] md:peer-data-[variant=inset]:m-2 md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow",
+        "relative flex min-h-svh flex-1 flex-col bg-background w-full",
+        "peer-data-[variant=inset]:min-h-[calc(100svh-theme(spacing.4))] md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow",
         className
       )}
       {...props}
-    />
+    >
+      {header}
+      <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8">
+        {children}
+      </main>
+    </div>
   )
 })
 SidebarInset.displayName = "SidebarInset"
