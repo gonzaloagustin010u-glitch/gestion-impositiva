@@ -61,7 +61,7 @@ export function AppHeader({ user }: { user: User }) {
   const pathname = usePathname();
 
   return (
-    <header className="flex h-16 items-center gap-4 border-b bg-primary px-4 md:px-6">
+    <header className="flex h-16 items-center gap-4 border-b">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <SidebarTrigger asChild>
