@@ -50,9 +50,14 @@ export default function PurchasesPage() {
     <div className="flex flex-col gap-8 w-full">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold font-headline">Compras</h1>
-        <Button>
-          <Upload className="mr-2 h-4 w-4" /> Importar Compras
-        </Button>
+        <div className="flex gap-2">
+          <Button variant="outline">
+            Extraer
+          </Button>
+          <Button>
+            <Upload className="mr-2 h-4 w-4" /> Importar Compras
+          </Button>
+        </div>
       </div>
 
       <Card>

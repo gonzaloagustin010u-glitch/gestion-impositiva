@@ -30,9 +30,14 @@ export default function SalesPage() {
     <div className="flex flex-col gap-8">
       <div className="flex items-center justify-between w-full">
         <h1 className="text-3xl font-bold font-headline">Ventas</h1>
-        <Button>
-          <Upload className="mr-2 h-4 w-4" /> Importar Ventas
-        </Button>
+        <div className="flex gap-2">
+          <Button variant="outline">
+            Extraer
+          </Button>
+          <Button>
+            <Upload className="mr-2 h-4 w-4" /> Importar Ventas
+          </Button>
+        </div>
       </div>
 
       <Card>
