@@ -1,3 +1,3 @@
 {"email":"test@example.com","passwordHash":"$2b$10$/C08hAzrkbIezB9y/AzC7eBYOILjtySpiUdIF.W1W.tv7.LB/V7fu","_id":"2QEdGyw3522F7fMx"}
-{"$$indexCreated":{"fieldName":"email","unique":true,"sparse":false}}
 {"email":"gonzaloagustin010u@gmail.com","passwordHash":"$2b$10$s3YqCgOKFAFL/Xm39RgdJ.GaQw53llk8IOsN16Q.cgPhvp5Mopfyq","_id":"w7nEBBCPN23VTRCB"}
+{"$$indexCreated":{"fieldName":"email","unique":true,"sparse":false}}

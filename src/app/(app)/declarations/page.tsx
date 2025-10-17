@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -8,41 +9,55 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Download, CheckCircle, Send } from "lucide-react";
+import { DeclarationData } from '@/types/declarations';
 
 export default function DeclarationsPage() {
-  const generateTxtFile = () => {
-    const salesData = {
-      neto: 142300.00,
-      iva: 29883.00,
-      total: 172183.00,
-    };
-    const purchasesData = {
-      neto: 58800.00,
-      iva: 12348.00,
-      total: 71148.00,
-    };
-    const finalPositionData = {
-      ivaVentas: 29883.00,
-      ivaCompras: -12348.00,
-      ivaPagar: 17535.00,
+  const [declarationData, setDeclarationData] = useState<DeclarationData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchDeclarationData = async () => {
+      try {
+        const response = await fetch('/api/declarations');
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.errors ? errorData.errors.join(', ') : 'Error al obtener los datos de la declaración');
+        }
+        const data: DeclarationData = await response.json();
+        setDeclarationData(data);
+      } catch (err: any) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    const content = `Resumen de Declaración de Junio 2024
+    fetchDeclarationData();
+  }, []);
+
+  const generateTxtFile = () => {
+    if (!declarationData) return;
+
+    const { ventas, compras, posicionIva } = declarationData;
+
+    const content = `Resumen de Declaración de ${declarationData.periodo}
+
 
 Totales de Ventas:
-  Monto Neto: $${salesData.neto.toFixed(2)}
-  IVA (21%): $${salesData.iva.toFixed(2)}
-  Ventas Totales: $${salesData.total.toFixed(2)}
+  Monto Neto: $${ventas.neto.toFixed(2)}
+  IVA (21%): $${ventas.iva.toFixed(2)}
+  Ventas Totales: $${ventas.total.toFixed(2)}
 
 Totales de Compras:
-  Monto Neto: $${purchasesData.neto.toFixed(2)}
-  IVA (21%): $${purchasesData.iva.toFixed(2)}
-  Compras Totales: $${purchasesData.total.toFixed(2)}
+  Monto Neto: $${compras.neto.toFixed(2)}
+  IVA (21%): $${compras.iva.toFixed(2)}
+  Compras Totales: $${compras.total.toFixed(2)}
 
 Posición Final:
-  IVA Ventas (Crédito Fiscal): $${finalPositionData.ivaVentas.toFixed(2)}
-  IVA Compras (Débito Fiscal): $${finalPositionData.ivaCompras.toFixed(2)}
-  IVA a Pagar: $${finalPositionData.ivaPagar.toFixed(2)}
+  IVA Ventas (Crédito Fiscal): $${posicionIva.ivaDebitoFiscal.toFixed(2)}
+  IVA Compras (Débito Fiscal): $${posicionIva.ivaCreditoFiscal.toFixed(2)}
+  IVA a Pagar: $${posicionIva.totalSaldoDdjjPerActual.toFixed(2)}
 `;
 
     const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
@@ -56,6 +71,20 @@ Posición Final:
     URL.revokeObjectURL(url);
   };
 
+  if (loading) {
+    return <div className="flex flex-col gap-8 w-full">Cargando declaraciones...</div>;
+  }
+
+  if (error) {
+    return <div className="flex flex-col gap-8 w-full text-red-500">Error: {error}</div>;
+  }
+
+  if (!declarationData) {
+    return <div className="flex flex-col gap-8 w-full">No hay datos de declaración disponibles.</div>;
+  }
+
+  const { ventas, compras, posicionIva } = declarationData;
+
   return (
     <div className="flex flex-col gap-8 w-full">
       <div className="flex items-center justify-between w-full">
@@ -64,7 +93,7 @@ Posición Final:
             <Button variant="outline">
                 <CheckCircle className="mr-2 h-4 w-4" /> Validar
             </Button>
-            <Button onClick={generateTxtFile}>
+            <Button onClick={generateTxtFile} disabled={!declarationData}>
                 <Download className="mr-2 h-4 w-4" /> Generar TXT
             </Button>
         </div>
@@ -81,25 +110,25 @@ Posición Final:
           <div className="p-6 border rounded-lg">
             <h3 className="text-lg font-semibold">Totales de Ventas</h3>
             <div className="mt-4 space-y-2 text-sm">
-                <p className="flex justify-between">Monto Neto: <span>$142,300.00</span></p>
-                <p className="flex justify-between">IVA (21%): <span>$29,883.00</span></p>
-                <p className="flex justify-between font-bold">Ventas Totales: <span className="font-bold">$172,183.00</span></p>
+                <p className="flex justify-between">Monto Neto: <span>${ventas.neto.toFixed(2)}</span></p>
+                <p className="flex justify-between">IVA (21%): <span>${ventas.iva.toFixed(2)}</span></p>
+                <p className="flex justify-between font-bold">Ventas Totales: <span className="font-bold">${ventas.total.toFixed(2)}</span></p>
             </div>
           </div>
           <div className="p-6 border rounded-lg">
             <h3 className="text-lg font-semibold">Totales de Compras</h3>
             <div className="mt-4 space-y-2 text-sm">
-                <p className="flex justify-between">Monto Neto: <span>$58,800.00</span></p>
-                <p className="flex justify-between">IVA (21%): <span>$12,348.00</span></p>
-                <p className="flex justify-between font-bold">Compras Totales: <span className="font-bold">$71,148.00</span></p>
+                <p className="flex justify-between">Monto Neto: <span>${compras.neto.toFixed(2)}</span></p>
+                <p className="flex justify-between">IVA (21%): <span>${compras.iva.toFixed(2)}</span></p>
+                <p className="flex justify-between font-bold">Compras Totales: <span className="font-bold">${compras.total.toFixed(2)}</span></p>
             </div>
           </div>
           <div className="p-6 rounded-lg bg-secondary text-secondary-foreground">
             <h3 className="text-lg font-semibold">Posición Final</h3>
             <div className="mt-4 space-y-2 text-sm">
-                <p className="flex justify-between">IVA Ventas (Crédito Fiscal): <span>$29,883.00</span></p>
-                <p className="flex justify-between">IVA Compras (Débito Fiscal): <span>-$12,348.00</span></p>
-                <p className="flex justify-between text-lg font-bold mt-4 pt-2 border-t">IVA a Pagar: <span className="font-bold text-accent-foreground">$17,535.00</span></p>
+                <p className="flex justify-between">IVA Ventas (Crédito Fiscal): <span>${posicionIva.ivaDebitoFiscal.toFixed(2)}</span></p>
+                <p className="flex justify-between">IVA Compras (Débito Fiscal): <span>${posicionIva.ivaCreditoFiscal.toFixed(2)}</span></p>
+                <p className="flex justify-between text-lg font-bold mt-4 pt-2 border-t">IVA a Pagar: <span className="font-bold text-accent-foreground">${posicionIva.totalSaldoDdjjPerActual.toFixed(2)}</span></p>
             </div>
           </div>
         </CardContent>
